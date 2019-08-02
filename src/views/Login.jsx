@@ -1,19 +1,23 @@
 import React from 'react';
-import {connect} from 'react-redux';
+import {connect} from '../reducers/store';
 import {login} from '../actions';
 import {UnauthorizedError} from '../errors';
 import {Redirect} from 'react-router-dom';
-import {reduxForm, Field, SubmissionError} from 'redux-form';
+//import {reduxForm, Field, SubmissionError} from 'redux-form';
+import {
+  withFormik,
+  Field
+} from 'formik';
 import {required, email} from './validation';
 
-const LoginForm = reduxForm({
-  form: 'login'
+const LoginForm = withFormik({
+  displayName: 'login'
 })(({handleSubmit, valid, submitting, error, onSubmit, auth: {messages, viewPlugin: {renderInput, SubmitButton, Form, FormError}}}) => {
   const submit = data => {
     return onSubmit(data).catch(UnauthorizedError, () => {
-      throw new SubmissionError({
-        _error: messages.loginFailed
-      });
+      //throw new SubmissionError({
+        //_error: messages.loginFailed
+      //});
     });
   };
   return (

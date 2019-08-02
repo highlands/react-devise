@@ -1,11 +1,14 @@
 import React from 'react';
-import {connect} from 'react-redux';
-import {reduxForm, Field} from 'redux-form';
+import {connect} from '../reducers/store';
+import {
+  withFormik,
+  Field
+} from 'formik';
 import {requestResetPassword, formAction} from '../actions';
 import {required, email} from './validation';
 
-const RequestResetPasswordForm = reduxForm({
-  form: 'requestResetPassword'
+const RequestResetPasswordForm = withFormik({
+  displayName: 'requestResetPassword'
 })(({handleSubmit, valid, submitting, submitSucceeded, error, onSubmit, auth: {messages, viewPlugin: {renderInput, SubmitButton, Form, FormError}}}) => {
   if (submitSucceeded) {
     return <p>

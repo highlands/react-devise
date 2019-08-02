@@ -1,11 +1,14 @@
 import React from 'react';
-import {connect} from 'react-redux';
-import {reduxForm, Field} from 'redux-form';
+import {connect} from '../reducers/store';
+import {
+  withFormik,
+  Field
+} from 'formik';
 import {requestReconfirm, formAction} from '../actions';
 import {required, email} from './validation';
 
-const RequestReconfirmForm = reduxForm({
-  form: 'requestReconfirmPassword'
+const RequestReconfirmForm = withFormik({
+  displayName: 'requestReconfirmPassword'
 })(({handleSubmit, valid, submitting, submitSucceeded, error, onSubmit, auth: {messages, viewPlugin: {renderInput, SubmitButton, FormError, Form}}}) => {
   if (submitSucceeded) {
     return <p>{messages.reqeustReconfirmSucceeded}</p>;

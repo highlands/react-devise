@@ -1,12 +1,15 @@
 import React from 'react';
-import {connect} from 'react-redux';
-import {reduxForm, Field} from 'redux-form';
+import {connect} from '../reducers/store';
+import {
+  withFormik,
+  Field
+} from 'formik';
 import {Redirect} from 'react-router-dom';
 import {signUp, formAction} from '../actions';
 import {required, email} from './validation';
 
-const SignUpForm = reduxForm({
-  form: 'signUp'
+const SignUpForm = withFormik({
+  displayName: 'signUp'
 })(({error, valid, submitting, submitSucceeded, handleSubmit, onSubmit, auth: {messages: {signUpSucceeded: signUpSucceededMessage}, viewPlugin: {renderInput, SubmitButton, Form, FormError}}}) => {
   if (submitSucceeded) {
     return <Redirect to={{

@@ -1,13 +1,16 @@
 import React from 'react';
-import {connect} from 'react-redux';
-import {reduxForm, Field} from 'redux-form';
+import {connect} from '../reducers/store';
+import {
+  withFormik,
+  Field
+} from 'formik';
 import {Redirect} from 'react-router-dom';
 import url from 'url';
 import {resetPassword, formAction} from '../actions';
 import {required} from './validation';
 
-const ResetPasswordForm = reduxForm({
-  form: 'requestResetPassword'
+const ResetPasswordForm = withFormik({
+  displayName: 'requestResetPassword'
 })(({handleSubmit, valid, submitting, error, onSubmit, query, submitSucceeded, auth: {resourceName, messages, viewPlugin: {renderInput, SubmitButton, Form, FormError}}}) => {
   const submitWithQuery = form => {
     return onSubmit({

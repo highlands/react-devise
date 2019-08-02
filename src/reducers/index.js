@@ -1,5 +1,6 @@
-import currentUser from './currentUser';
+import { currentUser, initialState } from './currentUser';
 
 export default {
-  currentUser
+  currentUser,
+  initialState
 };

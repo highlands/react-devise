@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {connect} from 'react-redux';
+import {connect} from '../reducers/store';
 import {Link} from 'react-router-dom';
 import {confirm, logout} from '../actions';
 import url from 'url';

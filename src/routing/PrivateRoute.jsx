@@ -1,5 +1,5 @@
 import React from 'react';
-import {Route} from 'react-router';
+import {Route} from 'react-router-dom';
 import requireAuth from './requireAuth';
 
 const PrivateRoute = ({component: Component, layout: Layout, authorize, ...more}) => {

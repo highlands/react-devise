@@ -1,5 +1,5 @@
 import React from 'react';
-import {connect} from 'react-redux';
+import {connect} from '../reducers/store';
 import {getConfig} from '../config/index';
 import {withRouter} from 'react-router-dom';
 
@@ -36,7 +36,7 @@ const mapStateToProps = state => {
   };
 };
 
-const AuthLinks = withRouter(connect(mapStateToProps)(AuthLinksComponent));
+const AuthLinks = connect(mapStateToProps)(withRouter(AuthLinksComponent));
 
 export {
   AuthLinks as default,

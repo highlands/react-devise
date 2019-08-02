@@ -1,13 +1,16 @@
 import React, {Component} from 'react';
-import {connect} from 'react-redux';
-import {reduxForm, Field} from 'redux-form';
+import {connect} from '../reducers/store';
+import {
+  withFormik,
+  Field
+} from 'formik';
 import {editUser, updateUser, formAction} from '../actions';
 import {required, email} from './validation';
 
 // TODO: We are using updateNeedsConfirmationMessage because email is the only field on this form, so we're assuming the email was updated. Need a better way to handle this.
 
-const UserForm = reduxForm({
-  form: 'editUser'
+const UserForm = withFormik({
+  displayName: 'editUser'
 })(({error, dirty, valid, submitting, submitSucceeded, handleSubmit, onSubmit, auth: {messages: {updateNeedsConfirmation: updateNeedsConfirmationMessage}, viewPlugin: {renderInput, SubmitButton, Form, FormError, FormSuccess}}}) => {
   return (
     <Form onSubmit={handleSubmit(formAction(onSubmit))}>

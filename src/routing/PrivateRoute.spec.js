@@ -1,6 +1,6 @@
 import React from 'react';
 import {mount} from 'enzyme';
-import {Switch, Route, MemoryRouter} from 'react-router';
+import {Switch, Route, MemoryRouter} from 'react-router-dom';
 import configureMockStore from 'redux-mock-store';
 import {Provider} from 'react-redux';
 import authRoutes from './authRoutes';
@@ -15,12 +15,10 @@ const Unauthorized = () => {
   return <div className="unauthorized" />;
 };
 
-const createMockStore = configureMockStore();
-
-let store, component;
+let component;
 
 const App = ({store, authorize}) => (
-  <Provider store={store}>
+  <store.Provider>
     <MemoryRouter initialIndex={0} initialEntries={['/']}>
       <Switch>
         <PrivateRoute exact path="/" component={Private} authorize={authorize} />
@@ -28,7 +26,7 @@ const App = ({store, authorize}) => (
         {authRoutes()}
       </Switch>
     </MemoryRouter>
-  </Provider>
+  </store.Provider>
 );
 
 const expectPrivate = component => {
@@ -50,7 +48,7 @@ beforeAll(() => {
 
 describe('PrivateRoute', () => {
   it('should render the route when current user is logged in', () => {
-    store = createMockStore({
+    store = React.createContext({
       currentUser: {
         isLoggedIn: true
       }
@@ -59,7 +57,7 @@ describe('PrivateRoute', () => {
     expectPrivate(component);
   });
   it('should redirect to login when current user is NOT logged in', () => {
-    store = createMockStore({
+    store = React.createContext({
       currentUser: {
         isLoggedIn: false
       }
@@ -68,7 +66,7 @@ describe('PrivateRoute', () => {
     expectLogin(component);
   });
   it('should render the route when passes custom authorize', () => {
-    store = createMockStore({
+    store = React.createContext({
       currentUser: {
         isLoggedIn: false
       }
@@ -80,7 +78,7 @@ describe('PrivateRoute', () => {
     expectPrivate(component);
   });
   it('should NOT render the route when fails custom authorize', () => {
-    store = createMockStore({
+    store = React.createContext({
       currentUser: {
         isLoggedIn: true
       }
