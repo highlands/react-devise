@@ -1,6 +1,6 @@
 {
-  "name": "react-devise",
-  "version": "0.0.19",
+  "name": "@highlands/react-devise",
+  "version": "0.0.1",
   "description": "A react front-end for a ruby on rails devise authentication server.",
   "main": "lib/index.js",
   "scripts": {
@@ -17,23 +17,21 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/timscott/react-devise.git"
+    "url": "git+ssh://git@github.com/highlands/react-devise.git"
   },
   "keywords": [
     "react",
     "devise",
     "ruby",
     "authentication",
-    "rails",
-    "redux",
-    "redux-form"
+    "rails"
   ],
-  "author": "Tim Scott <tscott@lunaversesoftware.com>",
+  "author": "Highlands <webadmin@churchofthehighlands.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/timscott/react-devise/issues"
+    "url": "https://github.com/highlands/react-devise/issues"
   },
-  "homepage": "https://github.com/timscott/react-devise#readme",
+  "homepage": "https://github.com/highlands/react-devise#readme",
   "dependencies": {
     "es6-error": "^4.0.2",
     "fetch-bluebird": "^1.0.3",
@@ -42,10 +40,7 @@
   },
   "peerDependencies": {
     "react": ">= 15.5.4 < 17.0.0-0",
-    "redux-form": ">=6.6.3 < 8.0.0",
-    "react-router-dom": "^4.1.1",
-    "react-redux": "^5.0.4",
-    "redux": "^3.6.0"
+    "react-router-dom": "^4.1.1"
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",
@@ -62,8 +57,6 @@
     "jest": "^20.0.4",
     "react": "^15.5.4",
     "react-dom": "^15.6.1",
-    "react-test-renderer": "^15.6.1",
-    "redux-form": "^7.0.0",
-    "redux-mock-store": "^1.2.3"
+    "react-test-renderer": "^15.6.1"
   }
 }
